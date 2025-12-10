@@ -1,4 +1,4 @@
-package notice_board.taeju.Entity;
+package notice_board.taeju.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -15,9 +15,10 @@ public class Category extends BaseTimeEntity {
     private Long id;
 
     @Column(length = 20, nullable = false, unique = true)
-    private String name;
+    private String name; //카테고리 이름
 
     @Builder
-
-
+    public Category(String name) {
+        this.name = name;
+    }
 }

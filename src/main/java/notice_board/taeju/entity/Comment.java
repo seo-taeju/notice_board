@@ -1,8 +1,7 @@
-package notice_board.taeju.Entity;
+package notice_board.taeju.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.*;
 import lombok.NoArgsConstructor;
 

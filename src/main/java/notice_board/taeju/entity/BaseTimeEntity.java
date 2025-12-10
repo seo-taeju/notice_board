@@ -1,4 +1,4 @@
-package notice_board.taeju.Entity;
+package notice_board.taeju.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

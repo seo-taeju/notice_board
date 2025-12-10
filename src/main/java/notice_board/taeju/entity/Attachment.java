@@ -1,8 +1,7 @@
-package notice_board.taeju.Entity;
+package notice_board.taeju.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.*;
 import lombok.NoArgsConstructor;
 
@@ -21,6 +20,7 @@ public class Attachment extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // [관계 설정] Post -> Attachment 단방향 매핑
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", nullable = false)
     private Post post;
@@ -31,6 +31,7 @@ public class Attachment extends BaseTimeEntity {
     @Column(name = "store_filename", nullable = false)
     private String storeFilename;
 
+    // 이미지 접근 경로. (예: /images/{storeFilename})
     @Column(name = "file_path", length = 500, nullable = false)
     private String filePath;
 
@@ -42,11 +43,4 @@ public class Attachment extends BaseTimeEntity {
         this.filePath = filePath;
     }
 
-    // Post와의 연관관계 편의 메서드 예시
-    public void setPost(Post post) {
-        this.post = post;
-        if (!post.getAttachments().contains(this)) {
-            post.getAttachments().add(this);
-        }
-    }
 }
