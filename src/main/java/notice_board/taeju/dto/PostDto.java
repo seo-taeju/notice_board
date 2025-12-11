@@ -42,7 +42,6 @@ public class PostDto {
         private final Long viewcount;
         private final Integer likeCount;
         private final LocalDateTime createdAt;
-        private final List<CommentDto.Response> comments;
 
         public FeedResponse(Post post) {
             this.id = post.getId();
@@ -56,11 +55,7 @@ public class PostDto {
 
             // 작성자 (회원/익명) 분기 처리
             this.nickAndAnonymous = (post.getUser() != null) ? post.getUser().getNickname() : post.getAnonymousName();
-            
-            //댓글들을 리스트로 변환
-            this.comments = post.getComments().stream()
-                    .map(CommentDto.Response:: new)
-                    .collect(Collectors.toList());
+
         }
     }
 
