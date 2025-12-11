@@ -16,7 +16,6 @@ public class UserDto {
         //클라이언트가 json형식으로 보냄
         private String password;
         private String nickname;
-
        //서비스에서 핼퍼메서드 사용해서 toEntity 제작하기
     }
     
@@ -24,7 +23,6 @@ public class UserDto {
     @Getter
     @NoArgsConstructor
     public static class UpdateRequest{
-        private String loginId;
         private String nickname;
         private String password;
     }

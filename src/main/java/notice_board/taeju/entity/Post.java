@@ -49,17 +49,13 @@ public class Post extends BaseTimeEntity {
     @Column(name = "anonymous_name", length = 20)
     private String anonymousName;
 
+
     @Column(name = "anonymous_password", length = 100)
     private String anonymousPassword;
 
     // 게시글 삭제 시 댓글도 삭제 (OneToMany)
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments = new ArrayList<>();
-
     /**고민좀 해보기, 이건 나중에 별도로 처리하는 것을 만들어야 될듯.*/
     // 게시글 삭제 시 첨부파일 정보도 삭제
-    /*@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Attachment> attachments = new ArrayList<>();*/
 
     @Builder
     public Post(String title, String content, User user, Category category, String anonymousName, String anonymousPassword) {

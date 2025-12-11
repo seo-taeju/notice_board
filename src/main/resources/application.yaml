@@ -6,7 +6,7 @@ spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     url: ${DB_URL:jdbc:mariadb://localhost:3307/notice_board} # 환경변수 없으면 기본값 사용 // 3306포트는 사용중이기 때문에 꼭 3307로 바꾸기
-    username: ${DB_USERNAME}
+    username: ${DB_USER}
     password: ${DB_PASSWORD}
     hikari:
       maximum-pool-size: 10 #커넥션 풀 10개
@@ -18,7 +18,7 @@ spring:
       # 핵심 변경: update -> create-drop
       # 시작 시: 기존 테이블 삭제 -> 새 테이블 생성
       # 종료 시: 테이블 삭제 (데이터 증발함)
-      ddl-auto: ${JPA_DDL_AUTO:update} # prod에서는 validate 또는 none 권장
+      ddl-auto: ${JPA_DDL_AUTO:create-drop} # prod에서는 validate 또는 none 권장
       default_batch_fetch_size: 100 # 핵심: 게시글 100개까지는 댓글을 한 방에 가져오겠다.
     show-sql: true
     #properties.hibernate.format_sql: true
@@ -26,6 +26,7 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.MariaDBDialect
+
 
 # 3. Thymeleaf (개발 시 캐시 끄기)
   thymeleaf:
